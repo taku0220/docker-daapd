@@ -33,13 +33,15 @@ RUN \
 	libsodium-dev \
 	libtool \
 	libunistring-dev \
-	libwebsockets-dev \
 	make \
 	openjdk8-jre-base \
 	protobuf-c-dev \
 	sqlite-dev \
 	taglib-dev \
 	tar && \
+ apk add --no-cache \
+	--repository http://nl.alpinelinux.org/alpine/edge/main \
+	libwebsockets-dev && \
  apk add --no-cache \
 	--repository http://nl.alpinelinux.org/alpine/edge/testing \
 	libantlr3c-dev \
@@ -106,10 +108,12 @@ RUN \
 	libressl \
 	libsodium \
 	libunistring \
-	libwebsockets \
 	protobuf-c \
 	sqlite \
 	sqlite-libs && \
+ apk add --no-cache \
+	--repository http://nl.alpinelinux.org/alpine/edge/main \
+	libwebsockets && \
  apk add --no-cache \
 	--repository http://nl.alpinelinux.org/alpine/edge/testing \
 	libantlr3c \
