@@ -69,7 +69,6 @@ RUN \
  autoreconf -i -v && \
  ./configure \
 	--build=$CBUILD \
-	--disable-avcodecsend \
 	--enable-chromecast \
 	--enable-itunes \
 	--enable-lastfm \
