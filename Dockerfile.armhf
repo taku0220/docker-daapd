@@ -1,4 +1,4 @@
-FROM lsiobase/alpine:arm32v7-3.8 as buildstage
+FROM lsiobase/alpine:arm32v7-3.11 as buildstage
 ############## build stage ##############
 
 ARG DAAPD_RELEASE
@@ -34,15 +34,13 @@ RUN \
 	libsodium-dev \
 	libtool \
 	libunistring-dev \
+	libwebsockets-dev \
 	make \
 	openjdk8-jre-base \
 	protobuf-c-dev \
 	sqlite-dev \
 	taglib-dev \
 	tar && \
- apk add --no-cache \
-	--repository http://nl.alpinelinux.org/alpine/edge/main \
-	libwebsockets-dev && \
  apk add --no-cache \
 	--repository http://nl.alpinelinux.org/alpine/edge/testing \
 	mxml-dev && \
@@ -119,7 +117,7 @@ RUN \
  make DESTDIR=/tmp/daapd-build install && \
  mv /tmp/daapd-build/etc/forked-daapd.conf /tmp/daapd-build/etc/forked-daapd.conf.orig
 ############## runtime stage ##############
-FROM lsiobase/alpine:arm32v7-3.8
+FROM lsiobase/alpine:arm32v7-3.11
 
 # set version label
 ARG BUILD_DATE
@@ -142,12 +140,10 @@ RUN \
 	libressl \
 	libsodium \
 	libunistring \
+	libwebsockets \
 	protobuf-c \
 	sqlite \
 	sqlite-libs && \
- apk add --no-cache \
-	--repository http://nl.alpinelinux.org/alpine/edge/main \
-	libwebsockets && \
  apk add --no-cache \
 	--repository http://nl.alpinelinux.org/alpine/edge/testing \
 	mxml
