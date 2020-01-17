@@ -67,6 +67,14 @@ RUN \
 	https://github.com/antlr/website-antlr3/raw/gh-pages/download/C/libantlr3c-3.4.tar.gz && \
  tar xf /tmp/source/libantlr3c.tar.gz  -C \
 	/tmp/source/libantlr3c --strip-components=1 && \
+ curl -o \
+ /tmp/source/libantlr3c/config.guess -L \
+	'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD' && \
+ chmod a+x /tmp/source/libantlr3c/config.guess && \
+ curl -o \
+ /tmp/source/libantlr3c/config.sub -L \
+	'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD' && \
+ chmod a+x /tmp/source/libantlr3c/config.sub && \
  export PATH="/tmp/source:$PATH" && \
  cd /tmp/source/libantlr3c && \
  if [ "${ARCHBITS}" = "64" ]; then \ 
