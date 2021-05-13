@@ -102,7 +102,7 @@ RUN \
 	--sysconfdir=/etc && \
  make && \
  make DESTDIR=/tmp/daapd-build install && \
- mv /tmp/daapd-build/etc/forked-daapd.conf /tmp/daapd-build/etc/forked-daapd.conf.orig
+ mv /tmp/daapd-build/etc/owntone.conf /tmp/daapd-build/etc/owntone.conf.orig
 ############## runtime stage ##############
 FROM ghcr.io/linuxserver/baseimage-alpine:3.12
 
